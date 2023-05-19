@@ -1,4 +1,5 @@
 import React, { FC, useState, useEffect } from "react";
+import process from "process";
 
 interface Results {
   address_line1: string;
@@ -15,7 +16,7 @@ const Index: FC = () => {
     setHideDropdown({});
   };
 
-  const apiKey = "11da404667ca45a78db6a73c3b6be0d9";
+  const apiKey: string | undefined = process.env.VITE_API_KEY;
   const baseUrl: string = `https://api.geoapify.com/v1/geocode/autocomplete?text=${inputValue}&format=json&apiKey=${apiKey}&limit=3&filter=countrycode:pl&lang=pl`;
 
   const getData = async () => {
